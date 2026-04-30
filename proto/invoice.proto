@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package invoice;
+
+// The invoice service definition.
+service InvoiceService {
+  // Generates an invoice from the given request.
+  rpc GenerateInvoice (InvoiceRequest) returns (InvoiceResponse);
+}
+
+option go_package = "invoiceService/pb";
+
+// The request containing the invoice details.
+message InvoiceRequest {
+  string customer_id = 1;
+  repeated Item items = 2;
+  string issue_date = 3;
+}
+
+// An item in the invoice.
+message Item {
+  string description = 1;
+  int32 quantity = 2;
+  double unit_price = 3;
+}
+
+// The response containing the generated invoice details.
+message InvoiceResponse {
+  string invoice_id = 1;
+  double total_amount = 2;
+  string generated_at = 3;
+}
