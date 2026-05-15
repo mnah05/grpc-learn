@@ -2,13 +2,13 @@ syntax = "proto3";
 
 package invoice;
 
+option go_package = "invoiceService/pb";
+
 // The invoice service definition.
 service InvoiceService {
   // Generates an invoice from the given request.
-  rpc GenerateInvoice (InvoiceRequest) returns (InvoiceResponse);
+  rpc GenerateInvoice(InvoiceRequest) returns (InvoiceResponse);
 }
-
-option go_package = "invoiceService/pb";
 
 // The request containing the invoice details.
 message InvoiceRequest {
